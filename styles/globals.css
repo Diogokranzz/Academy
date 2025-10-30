@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+}
+
+/* Force all text to black when applied on a container */
+.force-text-black, .force-text-black * {
+  color: #111827 !important; /* tailwind gray-900: melhor legibilidade em fundo claro */
+}
+
+/* In dark mode, switch forced text to a readable light tone */
+.dark .force-text-black, .dark .force-text-black * {
+  color: #e5e7eb !important; /* tailwind gray-200 */
+}
+
+/* Ensure readability on blurred/image panels (light or dark) */
+.force-text-black .backdrop-blur-sm,
+.force-text-black .backdrop-blur-sm * {
+  color: #ffffff !important;
+}
+
+/* Make any muted text inside blur panels fully white for readability */
+.backdrop-blur-sm .text-gray-300,
+.backdrop-blur-sm .text-gray-400,
+.backdrop-blur-sm .text-white\/80,
+.backdrop-blur-sm .text-white\/90,
+.backdrop-blur-sm .text-white\/70 {
+  color: #ffffff !important;
+}
+
+/* Force readable text on dark surfaces even in light mode */
+.force-on-dark, .force-on-dark * {
+  color: #ffffff !important;
+}
+
+/* Brand-emphasis text color that wins over global forcing */
+.force-text-brand {
+  color: #1d4ed8 !important; /* blue-700 */
+}
+.dark .force-text-brand {
+  color: #60a5fa !important; /* blue-400 for dark */
+}
+
+/* Force dark text when needed inside light buttons on dark sections */
+.force-text-dark {
+  color: #111827 !important; /* gray-900 */
+}
+
